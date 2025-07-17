@@ -1,0 +1,10 @@
+body {
+    display : flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#calculator {
+    min-height: 800px;
+    min-width: 700px;
+}
