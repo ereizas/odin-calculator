@@ -8,4 +8,11 @@ body {
     min-height: 800px;
     min-width: 700px;
     background-color: #AABAFB;
+    padding: 40px;
+}
+
+#display {
+    min-height: 150px;
+    min-width: 650px;
+    background-color: slategrey;
 }
