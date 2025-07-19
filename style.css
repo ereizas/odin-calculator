@@ -16,3 +16,16 @@ body {
     min-width: 650px;
     background-color: slategrey;
 }
+
+#buttons {
+    min-height: 150px;
+    min-width: 650px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#operators {
+    display: flex;
+    flex-direction: column;
+}
