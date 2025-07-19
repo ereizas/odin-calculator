@@ -1,4 +1,4 @@
-body {
+body, #buttons {
     display : flex;
     justify-content: center;
     align-content: center;
@@ -17,15 +17,27 @@ body {
     background-color: slategrey;
 }
 
+#digits {
+    display: flex;
+}
+
 #buttons {
     min-height: 150px;
     min-width: 650px;
+}
+
+.column {
     display: flex;
-    justify-content: center;
-    align-content: center;
+    flex-direction: column;
+    flex: 1 1 auto;
 }
 
 #operators {
     display: flex;
     flex-direction: column;
+}
+
+button {
+    min-height: 160px;
+    min-width: 160px;
 }
