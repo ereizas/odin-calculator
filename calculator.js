@@ -1,7 +1,7 @@
-let num1;
-let operator;
-let num2;
-
+let num1 = null;
+let operator = null;
+let num2 = null;
+const OPERATORS = 
 function add(num1,num2){
     return +num1 + +num2;
 }
@@ -35,8 +35,18 @@ function operate(num1,operator,num2){
             return "Invalid operator";
     }
 }
+
+function isOperator(char){
+    return ["+","-","*","/"].includes(char);
+}
+
 let display = document.querySelector("#display")
 let btns = document.querySelector("#buttons")
 btns.addEventListener("click", function(event){
-    display.textContent+=event.target.textContent;
+    console.log(event.target.textContent);
+    if(num1==null && isOperator(event.target.textContent)){
+        num1 = "0";
+        operator = event.target.textContent;
+        display.textContent+=operator;
+    }
 })
