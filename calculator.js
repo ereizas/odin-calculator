@@ -43,10 +43,12 @@ function isOperator(char){
 let display = document.querySelector("#display")
 let btns = document.querySelector("#buttons")
 btns.addEventListener("click", function(event){
-    console.log(event.target.textContent);
-    if(num1==null && isOperator(event.target.textContent)){
-        num1 = "0";
-        display.textContent+=event.target.textContent;
+    if(isOperator(event.target.textContent)){
+        if(num1==null){
+            num1 = "0";
+        }
+        operator = event.target.textContent
+        display.textContent+=operator;
     }
     else if(num1==null){
         num1=event.target.textContent;
