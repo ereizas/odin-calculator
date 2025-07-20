@@ -58,4 +58,8 @@ btns.addEventListener("click", function(event){
         num1+=event.target.textContent;
         display.textContent+=event.target.textContent;
     }
+    else{
+        num2+=event.target.textContent;
+        display.textContent+=event.target.textContent
+    }
 })
