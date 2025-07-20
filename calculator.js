@@ -1,6 +1,6 @@
 let num1 = null;
 let operator = null;
-let num2 = null;
+let num2 = "";
 const OPERATORS = 
 function add(num1,num2){
     return +num1 + +num2;
@@ -55,7 +55,7 @@ btns.addEventListener("click", function(event){
         display.textContent=num1;
     }
     else if(operator==null){
+        num1+=event.target.textContent;
         display.textContent+=event.target.textContent;
     }
-
 })
