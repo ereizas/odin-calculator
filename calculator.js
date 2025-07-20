@@ -35,3 +35,8 @@ function operate(num1,operator,num2){
             return "Invalid operator";
     }
 }
+let display = document.querySelector("#display")
+let btns = document.querySelector("#buttons")
+btns.addEventListener("click", function(event){
+    display.textContent+=event.target.textContent;
+})
