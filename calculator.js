@@ -48,11 +48,19 @@ btns.addEventListener("click", function(event){
         }
         else if(operator!=null && num2!=""){
             num1 = operate(num1,operator,num2);
+            num2 = "";
             operator = event.target.textContent;
             display.textContent = num1;
         }
         operator = event.target.textContent
         display.textContent+=operator;
+    }
+    else if(event.target.textContent=="="){
+        if(num1 && operator && num2)
+        {
+            num1 = operate(num1,operator,num2);
+            display.textContent = num1;
+        }
     }
     else if(event.target.textContent=="C"){
         display.textContent = "";
