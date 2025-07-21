@@ -54,6 +54,12 @@ btns.addEventListener("click", function(event){
         operator = event.target.textContent
         display.textContent+=operator;
     }
+    else if(event.target.textContent=="C"){
+        display.textContent = "";
+        num1 = null;
+        operator = null;
+        num2 = "";
+    }
     else if(num1==null){
         num1=event.target.textContent;
         display.textContent=num1;
