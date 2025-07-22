@@ -52,7 +52,12 @@ btns.addEventListener("click", function(event){
             operator = event.target.textContent;
             display.textContent = num1;
         }
-        operator = event.target.textContent
+        else if(operator!=null){
+            operator = event.target.textContent;
+            display.textContent=display.textContent.slice(0,display.textContent.length-1)+operator;
+            return
+        }
+        operator = event.target.textContent;
         display.textContent+=operator;
     }
     else if(event.target.textContent=="="){
