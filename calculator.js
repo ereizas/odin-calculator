@@ -65,6 +65,7 @@ btns.addEventListener("click", function(event){
         {
             num1 = operate(num1,operator,num2);
             display.textContent = num1;
+            num2="";
         }
     }
     else if(event.target.textContent=="C"){
