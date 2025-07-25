@@ -61,7 +61,7 @@ btns.addEventListener("click", function(event){
             num1 = operate(num1,operator,num2);
             num2 = "";
             operator = event.target.textContent;
-            display.textContent = num1;
+            display.textContent = round(num1);
         }
         else if(operator!=null){
             operator = event.target.textContent;
@@ -75,7 +75,7 @@ btns.addEventListener("click", function(event){
         if(num1 && operator && num2)
         {
             num1 = operate(num1,operator,num2);
-            display.textContent = num1;
+            display.textContent = round(num1);
             num2="";
             operator=null;
         }
