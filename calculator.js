@@ -35,6 +35,17 @@ function operate(num1,operator,num2){
     }
 }
 
+function round(num){
+    num = String(num);
+    decimalInd = num.indexOf(".");
+    if(decimalInd!=-1 && num.length>decimalInd+2){
+        return num.slice(0,decimalInd+3);
+    }
+    else{
+        return num;
+    }
+}
+
 function isOperator(char){
     return ["+","-","*","/"].includes(char);
 }
