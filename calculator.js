@@ -1,3 +1,4 @@
+const DIVIDE_BY_ZERO_MESSAGE = "Divide by 0 error";
 let num1 = null;
 let operator = null;
 let num2 = "";
@@ -15,7 +16,7 @@ function multiply(num1,num2){
 
 function divide(num1,num2){
     if(+num2==0){
-        return "Divide by 0 error";
+        return DIVIDE_BY_ZERO_MESSAGE;
     }
     return +num1 / +num2;
 }
@@ -50,18 +51,33 @@ function isOperator(char){
     return ["+","-","*","/"].includes(char);
 }
 
+function clear(){
+    display.textContent = "";
+    num1 = null;
+    operator = null;
+    num2 = "";
+}
+
 let display = document.querySelector("#display")
 let btns = document.querySelector("#buttons")
 btns.addEventListener("click", function(event){
+    if(display.textContent==DIVIDE_BY_ZERO_MESSAGE){
+        clear();
+        return;
+    }
     if(isOperator(event.target.textContent)){
         if(num1==null){
             num1 = "0";
         }
         else if(operator!=null && num2!=""){
             num1 = operate(num1,operator,num2);
-            num2 = "";
-            operator = event.target.textContent;
             display.textContent = round(num1);
+            if(num1!=DIVIDE_BY_ZERO_MESSAGE){
+                num2 = "";
+            }
+            else{
+                return;
+            }
         }
         else if(operator!=null){
             operator = event.target.textContent;
@@ -81,10 +97,7 @@ btns.addEventListener("click", function(event){
         }
     }
     else if(event.target.textContent=="C"){
-        display.textContent = "";
-        num1 = null;
-        operator = null;
-        num2 = "";
+        clear();
     }
     else if(num1==null){
         num1=event.target.textContent;
