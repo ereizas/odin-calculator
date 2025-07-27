@@ -2,6 +2,7 @@ const DIVIDE_BY_ZERO_MESSAGE = "Divide by 0 error";
 let num1 = null;
 let operator = null;
 let num2 = "";
+let equalsPrevPressed = false;
 function add(num1,num2){
     return +num1 + +num2;
 }
@@ -61,6 +62,10 @@ function clear(){
 let display = document.querySelector("#display")
 let btns = document.querySelector("#buttons")
 btns.addEventListener("click", function(event){
+    if(equalsPrevPressed){
+        clear();
+        equalsPrevPressed = false;
+    }
     if(display.textContent==DIVIDE_BY_ZERO_MESSAGE){
         clear();
         return;
@@ -94,6 +99,7 @@ btns.addEventListener("click", function(event){
             display.textContent = round(num1);
             num2="";
             operator=null;
+            equalsPrevPressed = true;
         }
     }
     else if(event.target.textContent=="C"){
