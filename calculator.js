@@ -62,10 +62,11 @@ function clear(){
 let display = document.querySelector("#display")
 let btns = document.querySelector("#buttons")
 btns.addEventListener("click", function(event){
-    if(equalsPrevPressed){
+    //TODO: check if not an operator here to be able to use number after equals is pressed
+    if(equalsPrevPressed && !isOperator(event.target.textContent)){
         clear();
-        equalsPrevPressed = false;
     }
+    equalsPrevPressed = false;
     if(display.textContent==DIVIDE_BY_ZERO_MESSAGE){
         clear();
         return;
