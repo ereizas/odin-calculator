@@ -109,11 +109,11 @@ btns.addEventListener("click", function(event){
         num1=event.target.textContent;
         display.textContent=num1;
     }
-    else if(operator==null){
+    else if(operator==null && (event.target.textContent!="." || !num1.includes("."))){
         num1+=event.target.textContent;
-        display.textContent+=event.target.textContent;
+        display.textContent+=event.target.textContent; 
     }
-    else{
+    else if(event.target.textContent!="."||!num2.includes(".")){
         num2+=event.target.textContent;
         display.textContent+=event.target.textContent
     }
