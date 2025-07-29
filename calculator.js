@@ -1,4 +1,5 @@
 const DIVIDE_BY_ZERO_MESSAGE = "Divide by 0 error";
+const BACKSPACE = "\u232B";
 let num1 = null;
 let operator = null;
 let num2 = "";
@@ -62,7 +63,6 @@ function clear(){
 let display = document.querySelector("#display")
 let btns = document.querySelector("#buttons")
 btns.addEventListener("click", function(event){
-    //TODO: check if not an operator here to be able to use number after equals is pressed
     if(equalsPrevPressed && !isOperator(event.target.textContent)){
         clear();
     }
@@ -105,6 +105,21 @@ btns.addEventListener("click", function(event){
     }
     else if(event.target.textContent=="C"){
         clear();
+    }
+    else if(event.target.textContent==BACKSPACE){
+        if(num2!=""){
+            num2=num2.slice(0,num2.length-1);
+        }
+        else if(operator!=null){
+            operator=null;
+        }
+        else{
+            num1=num1.slice(0,num1.length-1);
+            if(num1==""){
+                num1=null;
+            }
+        }
+        display.textContent = display.textContent.slice(0,display.textContent.length-1)
     }
     else if(num1==null){
         num1=event.target.textContent;
