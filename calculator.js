@@ -59,11 +59,8 @@ function clear(){
     operator = null;
     num2 = "";
 }
-
-let display = document.querySelector("#display")
-let btns = document.querySelector("#buttons")
-btns.addEventListener("click", function(event){
-    if(equalsPrevPressed && !isOperator(event.target.textContent)){
+function handleBtnPress(key){
+    if(equalsPrevPressed && !isOperator(key)){
         clear();
     }
     equalsPrevPressed = false;
@@ -71,7 +68,7 @@ btns.addEventListener("click", function(event){
         clear();
         return;
     }
-    if(isOperator(event.target.textContent)){
+    if(isOperator(key)){
         if(num1==null){
             num1 = "0";
         }
@@ -86,14 +83,14 @@ btns.addEventListener("click", function(event){
             }
         }
         else if(operator!=null){
-            operator = event.target.textContent;
+            operator = key;
             display.textContent=display.textContent.slice(0,display.textContent.length-1)+operator;
             return
         }
-        operator = event.target.textContent;
+        operator = key;
         display.textContent+=operator;
     }
-    else if(event.target.textContent=="="){
+    else if(key=="="){
         if(num1 && operator && num2)
         {
             num1 = operate(num1,operator,num2);
@@ -103,17 +100,17 @@ btns.addEventListener("click", function(event){
             equalsPrevPressed = true;
         }
     }
-    else if(event.target.textContent=="C"){
+    else if(key=="C"){
         clear();
     }
-    else if(event.target.textContent==BACKSPACE){
+    else if(key==BACKSPACE){
         if(num2!=""){
             num2=num2.slice(0,num2.length-1);
         }
         else if(operator!=null){
             operator=null;
         }
-        else{
+        else if(num1!=null){
             num1=num1.slice(0,num1.length-1);
             if(num1==""){
                 num1=null;
@@ -122,15 +119,33 @@ btns.addEventListener("click", function(event){
         display.textContent = display.textContent.slice(0,display.textContent.length-1)
     }
     else if(num1==null){
-        num1=event.target.textContent;
+        num1=key;
         display.textContent=num1;
     }
-    else if(operator==null && (event.target.textContent!="." || !num1.includes("."))){
-        num1+=event.target.textContent;
-        display.textContent+=event.target.textContent; 
+    else if(operator==null && (key!="." || !num1.includes("."))){
+        num1+=key;
+        display.textContent+=key; 
     }
-    else if(event.target.textContent!="."||!num2.includes(".")){
-        num2+=event.target.textContent;
-        display.textContent+=event.target.textContent
+    else if(key!="."||!num2.includes(".")){
+        num2+=key;
+        display.textContent+=key
+    }
+}
+
+let display = document.querySelector("#display")
+let keys = document.querySelector("#buttons")
+keys.addEventListener("click", function(event){
+    handleBtnPress(event.target.textContent);
+})
+
+document.addEventListener("keydown",function(event){
+    if(!isNaN(Number(event.key))||isOperator(event.key)||event.key=="."||event.key=="="){
+        handleBtnPress(event.key);
+    }
+    else if(event.key=="Backspace"){
+        handleBtnPress(BACKSPACE);
+    }
+    else if(event.key=="c"||event.key=="C"){
+        handleBtnPress("C");
     }
 })
